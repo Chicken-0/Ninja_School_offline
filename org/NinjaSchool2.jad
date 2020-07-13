@@ -1,0 +1,8 @@
+MIDlet-1: Ninja School 2,/icon.png,Midlet
+MIDlet-Jar-Size: 451180
+MIDlet-Jar-URL: http://dl.teamobi.com/wap/bin/NinjaSchool2.jar
+MIDlet-Name: NinjaSchool2
+MIDlet-Vendor: TeaM
+MIDlet-Version: 1.0.0
+MicroEdition-Configuration: CLDC-1.0
+MicroEdition-Profile: MIDP-2.0
