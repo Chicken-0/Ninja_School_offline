@@ -1193,7 +1193,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    // $FF: renamed from: ku int
    private static int field_int_ku;
    // $FF: renamed from: kv int
-   private static int field_int_kv;
+   private static int shopType;
    // $FF: renamed from: kw int[]
    private static int[] field_array_int_kw;
    // $FF: renamed from: kx java.lang.String[][]
@@ -8785,14 +8785,15 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
                                     if (var4 == 6) {
                                        func_void_ao();
                                        field_int_d = 9;
-                                       field_int_kv = 0;
+                                       shopType = 0;
                                     }
                                  }
 
                                  if (field_int_v == 2 && var4 == 0) {
                                     func_void_ao();
                                     field_int_d = 9;
-                                    field_int_kv = 1;
+                                    // Hack: Force buy item by money in game.
+                                    shopType = 0;
                                  }
 
                                  if (field_int_v == 1 && var4 == 0) {
@@ -11158,7 +11159,8 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
          func_void_a(0, "* Lối vào", 60, 245);
          func_void_a(1, "Trường Hirosaki", 240, 197);
          func_void_a(2, "Lối ra /", 420, 245);
-         func_void_a(2, "Mua đồ tiền thật", 552, 245);
+//         func_void_a(2, "Mua đồ tiền thật", 552, 245);
+         func_void_a(2, "Bán HP-MP", 552, 245);
          func_void_a(3, "đường hoa đào /", 1356, 221);
       } else if (var0 == 3) {
          field_int_jq = 2;
@@ -14095,7 +14097,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       var0.drawRect(field_int_bF - 63, field_int_U - 18, 126, 99);
       var0.setColor(6562304);
       var0.fillRect(field_int_bF - 61, field_int_U - 16, 123, 97);
-      if (field_int_kv == 0) {
+      if (shopType == 0) {
          Midlet.func_void_a(var0, "Tiền: " + field_int_dg + "$", field_int_bF, field_int_U - 8, 2);
       } else {
          Midlet.func_void_a(var0, field_array_array_class_java_lang_String_kx[field_int_ku][field_int_ks], field_int_bF, field_int_U - 8, 2);
@@ -14127,8 +14129,8 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       } else {
          var0.drawRect(field_int_kr + 10 + field_int_ks * 20, field_int_U + 32, 19, 20);
       }
-
-      if (field_int_kv == 0) {
+      
+      if (shopType == 0) {
          Midlet.func_void_a(var0, field_array_array_class_java_lang_String_kx[field_int_ku][field_int_ks] + "-" + field_array_array_int_kz[field_int_ku][field_int_ks] + "$", field_int_bF, field_int_U + 58, 2);
       } else {
          Midlet.func_void_a(var0, field_array_array_class_java_lang_String_ky[field_int_ku][field_int_ks], field_int_bF, field_int_U + 58, 2);
@@ -14181,7 +14183,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       if (field_array_boolean_aV[5] || field_array_boolean_aV[12]) {
          func_void_d();
          if (field_int_ku == 0) {
-            if (field_int_kv == 0) {
+            if (shopType == 0) {
                if (field_int_ks < 3) {
                   if (field_array_int_V[0] + field_array_int_V[1] + field_array_int_V[2] > 99) {
                      return;
@@ -14214,7 +14216,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
                return;
             }
 
-            if (field_int_kv == 0) {
+            if (shopType == 0) {
                if (field_int_dg >= field_array_array_int_kz[field_int_ku][field_int_ks]) {
                   field_int_dg -= field_array_array_int_kz[field_int_ku][field_int_ks];
                   field_int_x = field_int_ks;
