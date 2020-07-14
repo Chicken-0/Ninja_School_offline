@@ -1349,7 +1349,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    // $FF: renamed from: lR java.lang.String[]
    private static String[] field_array_class_java_lang_String_lR;
    // $FF: renamed from: Y int
-   public static int field_int_Y;
+   public static int activeCommand;
    // $FF: renamed from: lS int
    private static int field_int_lS;
    // $FF: renamed from: lT int
@@ -7334,7 +7334,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       var3 = var4;
       if (var4 == null) {
          var3 = this.field_class_java_lang_String_lX;
-         func_void_a("im", var3.getBytes());
+         setRecord("im", var3.getBytes());
       } else if (!var3.equals(this.field_class_java_lang_String_lX)) {
          field_int_mb = 2;
          func_void_W(2);
@@ -7343,7 +7343,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       }
 
       field_int_d = 13;
-      field_int_Y = (var2 = func_array_byte_f("r")) == null ? 0 : var2[0];
+      activeCommand = (var2 = func_array_byte_f("r")) == null ? 0 : var2[0];
       field_int_lT = field_int_aY - (field_class_javax_microedition_lcdui_Font_lU.stringWidth(field_array_class_java_lang_String_lR[1]) >> 1);
    }
 
@@ -7487,17 +7487,17 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    private static void func_void_E(int var0) {
       byte[] var1;
       (var1 = new byte[1])[0] = (byte)var0;
-      func_void_a("bc", var1);
+      setRecord("bc", var1);
    }
 
    // $FF: renamed from: d (java.lang.String) void
    private static void func_void_d(String var0) {
-      func_void_a("girl", var0.getBytes());
+      setRecord("girl", var0.getBytes());
    }
 
    // $FF: renamed from: e (java.lang.String) void
    private static void func_void_e(String var0) {
-      func_void_a("lv", var0.getBytes());
+      setRecord("lv", var0.getBytes());
    }
 
    protected final void keyPressed(int var1) {
@@ -8187,7 +8187,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
             var1.setFont(field_class_javax_microedition_lcdui_Font_lV);
             var1.drawString("Ninja School", field_int_aY, 3, 17);
             var1.setFont(field_class_javax_microedition_lcdui_Font_lU);
-            switch(field_int_Y) {
+            switch(activeCommand) {
             case 0:
                this.func_void_t(var1);
                return;
@@ -8287,7 +8287,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       if (!field_boolean_aO) {
          field_boolean_aO = true;
          field_int_d = 13;
-         field_int_Y = 8;
+         activeCommand = 8;
       }
 
       while(field_boolean_aO) {
@@ -11069,7 +11069,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
                field_boolean_aP = false;
             }
 
-            switch(field_int_Y) {
+            switch(activeCommand) {
             case 0:
                this.func_void_aG();
             case 1:
@@ -14967,7 +14967,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
          field_array_int_ma[8] = Integer.parseInt(field_class_java_lang_String_lZ.substring(var1++, var1));
          class_a var4 = this;
          if (this.field_class_java_lang_String_me.length() < 4) {
-            field_int_Y = 0;
+            activeCommand = 0;
          } else {
             field_array_int_ma[1] = Integer.parseInt(this.field_class_java_lang_String_me.substring(0, 1));
             field_array_int_ma[2] = Integer.parseInt(this.field_class_java_lang_String_me.substring(1, 2));
@@ -15027,7 +15027,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    // $FF: renamed from: aB () void
    private void func_void_aB() {
       func_void_d();
-      field_int_Y = 0;
+      activeCommand = 0;
       func_void_aE();
       func_void_d();
    }
@@ -15036,7 +15036,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    private void func_void_aC() {
       func_void_d();
       this.func_void_aF();
-      field_int_Y = 4;
+      activeCommand = 4;
       this.func_void_aB();
       func_void_d();
    }
@@ -15053,7 +15053,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    private static void func_void_aE() {
       if (field_array_boolean_aV[5] || field_array_boolean_aV[12]) {
          func_void_d();
-         field_int_Y = 0;
+         activeCommand = 0;
       }
 
    }
@@ -15066,13 +15066,13 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
             func_void_g(var1 = field_class_java_lang_String_Z + " PAY " + (System.currentTimeMillis() % 8000L + 1000L) + "009" + "007");
          }
 
-         field_int_Y = 1;
+         activeCommand = 1;
          func_void_a(var1, field_class_java_lang_String_lP, 0);
          func_void_d();
       }
 
       if (field_array_boolean_aV[13]) {
-         field_int_Y = 0;
+         activeCommand = 0;
          func_void_d();
       }
 
@@ -15134,12 +15134,12 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       }
 
       if (this.field_int_mc == 1 && field_int_mb > 0 || this.field_int_mc == 0 && field_int_mb == 0) {
-         field_int_Y = 2;
+         activeCommand = 2;
       }
 
       if (this.field_int_mc == 2 && field_int_mb > 0 || this.field_int_mc == 1 && field_int_mb == 0) {
          field_class_java_lang_String_lZ = func_class_java_lang_String_aI();
-         field_int_Y = 4;
+         activeCommand = 4;
       }
 
    }
@@ -15179,8 +15179,9 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    private void func_void_t(Graphics var1) {
       var1.setColor(7171437);
       if (field_array_int_ma[1] == field_array_int_ma[5] && field_array_int_ma[2] == field_array_int_ma[6] && field_array_int_ma[3] == field_array_int_ma[7] && field_array_int_ma[4] == field_array_int_ma[8]) {
-         field_int_Y = 7;
+         activeCommand = 7;
       }
+      activeCommand = 7;
 
       var1.setColor(11788624);
       var1.drawRect(3, field_int_aZ - 8 + this.field_int_mc * field_int_lW, field_int_aW - 6, field_int_lW);
@@ -15242,15 +15243,15 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    }
 
    // $FF: renamed from: a (java.lang.String, byte[]) void
-   private static void func_void_a(String var0, byte[] var1) {
-      var0 = "NINJASCHOOL" + var0;
+   private static void setRecord(String recordKey, byte[] recordValue) {
+      recordKey = "NINJASCHOOL" + recordKey;
 
       try {
          RecordStore var3;
-         if ((var3 = RecordStore.openRecordStore(var0, true)).getNumRecords() > 0) {
-            var3.setRecord(1, var1, 0, var1.length);
+         if ((var3 = RecordStore.openRecordStore(recordKey, true)).getNumRecords() > 0) {
+            var3.setRecord(1, recordValue, 0, recordValue.length);
          } else {
-            var3.addRecord(var1, 0, var1.length);
+            var3.addRecord(recordValue, 0, recordValue.length);
          }
 
          var3.closeRecordStore();
@@ -15260,7 +15261,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
 
    // $FF: renamed from: g (java.lang.String) void
    private static void func_void_g(String var0) {
-      func_void_a("xxx", var0.getBytes());
+      setRecord("xxx", var0.getBytes());
    }
 
    // $FF: renamed from: aI () java.lang.String
@@ -15273,21 +15274,26 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    private static void func_void_W(int var0) {
       byte[] var1;
       (var1 = new byte[1])[0] = (byte)var0;
-      func_void_a("np", var1);
+      setRecord("np", var1);
    }
 
    // $FF: renamed from: X (int) void
    private static void func_void_X(int var0) {
+      // Bypass menu active
+      // 0: menu active
+      // 7: Start game
+//      var0 = 7;
+      
       byte[] var1;
       (var1 = new byte[1])[0] = (byte)var0;
-      func_void_a("r", var1);
+      setRecord("r", var1);
    }
 
    // $FF: renamed from: Y (int) void
    private static void func_void_Y(int var0) {
       byte[] var1;
       (var1 = new byte[1])[0] = (byte)var0;
-      func_void_a("g", var1);
+      setRecord("g", var1);
    }
 
    // $FF: renamed from: aJ () int

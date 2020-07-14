@@ -9,12 +9,12 @@ final class class_b implements Runnable {
    // $FF: renamed from: b java.lang.String
    private final String field_class_java_lang_String_b;
    // $FF: renamed from: c int
-   private final int field_int_c;
+   private final int buyType;
 
    class_b(String var1, String var2, int var3) {
       this.field_class_java_lang_String_a = var1;
       this.field_class_java_lang_String_b = var2;
-      this.field_int_c = var3;
+      this.buyType = var3;
    }
 
    public final void run() {
@@ -26,9 +26,9 @@ final class class_b implements Runnable {
          var1.send(var2);
          class_a.func_void_d();
          int[] var10000;
-         switch(this.field_int_c) {
+         switch(this.buyType) {
          case 0:
-            class_a.field_int_Y = 5;
+            class_a.activeCommand = 5;
             return;
          case 1:
             var10000 = class_a.field_array_int_V;
@@ -72,9 +72,9 @@ final class class_b implements Runnable {
          default:
          }
       } catch (Exception var3) {
-         switch(this.field_int_c) {
+         switch(this.buyType) {
          case 0:
-            class_a.field_int_Y = 6;
+            class_a.activeCommand = 6;
             return;
          default:
             class_a.func_void_s(7);
