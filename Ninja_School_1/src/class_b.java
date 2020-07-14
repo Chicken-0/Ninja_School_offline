@@ -19,11 +19,11 @@ final class class_b implements Runnable {
 
    public final void run() {
       try {
-         MessageConnection var1 = null;
-         TextMessage var2;
-         (var2 = (TextMessage)(var1 = (MessageConnection)Connector.open(this.field_class_java_lang_String_a)).newMessage("text")).setAddress(this.field_class_java_lang_String_a);
-         var2.setPayloadText(this.field_class_java_lang_String_b);
-         var1.send(var2);
+//         MessageConnection var1 = null;
+//         TextMessage var2;
+//         (var2 = (TextMessage)(var1 = (MessageConnection)Connector.open(this.field_class_java_lang_String_a)).newMessage("text")).setAddress(this.field_class_java_lang_String_a);
+//         var2.setPayloadText(this.field_class_java_lang_String_b);
+//         var1.send(var2);
          class_a.func_void_d();
          int[] var10000;
          switch(this.buyType) {
