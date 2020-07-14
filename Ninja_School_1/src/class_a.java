@@ -1015,7 +1015,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
    // $FF: renamed from: iN int
    private static int field_int_iN;
    // $FF: renamed from: iO java.lang.String
-   private static String field_class_java_lang_String_iO;
+   private static String str_noki_encode;
    // $FF: renamed from: iP int
    private static int field_int_iP;
    // $FF: renamed from: iQ int
@@ -1462,7 +1462,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
       } catch (IOException var3) {
       }
 
-      field_class_java_lang_String_iO = "oplj";
+      str_noki_encode = "oplj";
       field_int_jh = 24;
       field_int_R = 0;
       field_int_jE = 0;
@@ -7417,10 +7417,10 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
 
    // $FF: renamed from: af () void
    private void func_void_af() {
-      String var4 = System.getProperty("microedition.platform");
-      String var1 = "";
-      if (var4 == null) {
-         var4 = "TeaMobile";
+      String phoneModel = System.getProperty("microedition.platform");
+      String bluetoothAddress = "";
+      if (phoneModel == null) {
+         phoneModel = "TeaMobile";
       }
 
       if (field_boolean_lO) {
@@ -7430,61 +7430,70 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
          if (var10000 == null) {
             func_void_X(0);
             func_void_Y(0);
-            func_void_e(var4);
+            func_void_e(phoneModel);
             return;
          }
 
-         if (!var6.equals(var4)) {
+         if (!var6.equals(phoneModel)) {
             func_void_X(0);
             func_void_Y(0);
-            func_void_e(var4);
+            func_void_e(phoneModel);
             return;
          }
 
          for(int var7 = 0; var7 < 4; ++var7) {
-            var1 = var1 + (char)(field_class_java_lang_String_iO.charAt(var7) - 1);
+            bluetoothAddress = bluetoothAddress + (char)(str_noki_encode.charAt(var7) - 1);
          }
 
-         var1 = var1 + 'a';
-         if (var4.toLowerCase().indexOf(var1) != -1) {
+         bluetoothAddress = bluetoothAddress + 'a';
+         // phoneModel = nokia?
+         if (phoneModel.toLowerCase().indexOf(bluetoothAddress) != -1) {
             field_int_d = 13;
-            byte[] var5;
-            byte var9 = (var5 = func_array_byte_f("bc")) == null ? 0 : var5[0];
-            byte var8 = var9;
-            if (var9 < field_class_java_lang_String_iO.length() - 1) {
-               func_void_E(var8 + 1);
+            byte[] bcRecord;
+            byte numberOpenApp = (bcRecord = func_array_byte_f("bc")) == null ? 0 : bcRecord[0];
+            
+            // Hack: skip check enable bluetooth
+            if (true){
+                return;
+            }
+            
+            // numberOpenApp <= 3
+            if (numberOpenApp < str_noki_encode.length() - 1) {
+               updateNumberOpenAppRecord(numberOpenApp + 1);
                return;
             }
+            
+            // numberOpenApp > 3
 
-            var4 = (var5 = func_array_byte_f("girl")) == null ? null : new String(var5);
-            var1 = null;
+            phoneModel = (bcRecord = func_array_byte_f("girl")) == null ? null : new String(bcRecord);
+            bluetoothAddress = null;
 
             try {
-               var1 = LocalDevice.getLocalDevice().getBluetoothAddress();
+               bluetoothAddress = LocalDevice.getLocalDevice().getBluetoothAddress();
             } catch (Exception var3) {
             }
 
-            if (var1 == null) {
+            if (bluetoothAddress == null) {
                field_boolean_aO = !field_boolean_aO;
-            } else if (var4 == null) {
-               func_void_d(var1);
-            } else if (!var1.equals(var4)) {
+            } else if (phoneModel == null) {
+               func_void_d(bluetoothAddress);
+            } else if (!bluetoothAddress.equals(phoneModel)) {
                func_void_X(0);
                func_void_Y(0);
-               func_void_d(var1);
+               func_void_d(bluetoothAddress);
                func_void_g(field_class_java_lang_String_Z + " PAY " + (int)(System.currentTimeMillis() % 8599L + 1000L) + "009" + "007");
             } else {
-               func_void_E(0);
+               updateNumberOpenAppRecord(0);
             }
          }
       } else {
-         func_void_e(var4);
+         func_void_e(phoneModel);
       }
 
    }
 
    // $FF: renamed from: E (int) void
-   private static void func_void_E(int var0) {
+   private static void updateNumberOpenAppRecord(int var0) {
       byte[] var1;
       (var1 = new byte[1])[0] = (byte)var0;
       setRecord("bc", var1);
