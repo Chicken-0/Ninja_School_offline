@@ -14093,25 +14093,28 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
 
    // $FF: renamed from: m (javax.microedition.lcdui.Graphics) void
    private static void func_void_m(Graphics var0) {
+      int pxFix = 10;
+      
       var0.translate(-var0.getTranslateX(), -var0.getTranslateY());
       func_void_d(var0);
       func_void_c(var0);
       var0.setClip(0, 0, field_int_aW, field_int_aX);
       var0.setColor(0);
-      var0.fillRect(field_int_bF - 64, field_int_U - 19, 129, 102);
+      var0.fillRect(field_int_bF - 64 - pxFix, field_int_U - 19, 129 + pxFix * 2, 102);
       var0.fillRect(0, field_int_aX - 13, field_int_aW, 13);
       Midlet.func_void_a(var0, "Mua", 3, field_int_aX - 13, 0);
       Midlet.func_void_a(var0, "Quay lại", field_int_aW - 3, field_int_aX - 13, 1);
       var0.setColor(12281361);
-      var0.drawRect(field_int_bF - 63, field_int_U - 18, 126, 99);
+      var0.drawRect(field_int_bF - 63 - pxFix, field_int_U - 18, 126 + pxFix * 2, 99);
       var0.setColor(6562304);
-      var0.fillRect(field_int_bF - 61, field_int_U - 16, 123, 97);
+      var0.fillRect(field_int_bF - 61 - pxFix, field_int_U - 16, 123 + pxFix * 2, 97);
       if (shopType == 0) {
          Midlet.func_void_a(var0, "Tiền: " + field_int_dg + "$", field_int_bF, field_int_U - 8, 2);
       } else {
          Midlet.func_void_a(var0, field_array_array_class_java_lang_String_kx[field_int_ku][field_int_ks], field_int_bF, field_int_U - 8, 2);
       }
 
+      // Potion
       int var1;
       for(var1 = 0; var1 < 3; ++var1) {
          var0.setColor(0);
@@ -14124,6 +14127,7 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
          var0.drawRegion(field_array_class_javax_microedition_lcdui_Image_ez[1], 0, var1 * 15, 13, 15, 0, field_int_kr + 60 + var1 * 20, field_int_U + 20, 3);
       }
 
+      // Sword
       for(var1 = 0; var1 < 4; ++var1) {
          var0.setColor(0);
          var0.fillRect(field_int_kr + 10 + var1 * 20, field_int_U + 32, 19, 20);
@@ -14145,10 +14149,11 @@ public final class class_a extends Canvas implements Runnable, CommandListener {
          Midlet.func_void_a(var0, field_array_array_class_java_lang_String_ky[field_int_ku][field_int_ks], field_int_bF, field_int_U + 58, 2);
       }
 
-      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[0], field_int_bF - 64, field_int_U - 19, 20);
-      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[1], field_int_bF + 65, field_int_U - 19, 24);
-      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[2], field_int_bF - 64, field_int_U + 83, 36);
-      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[3], field_int_bF + 65, field_int_U + 83, 40);
+      // Border decoration
+      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[0], field_int_bF - 64 - pxFix, field_int_U - 19, 20);
+      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[1], field_int_bF + 65 + pxFix, field_int_U - 19, 24);
+      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[2], field_int_bF - 64 - pxFix, field_int_U + 83, 36);
+      var0.drawImage(field_array_class_javax_microedition_lcdui_Image_kK[3], field_int_bF + 65 + pxFix, field_int_U + 83, 40);
    }
 
    // $FF: renamed from: ap () void
